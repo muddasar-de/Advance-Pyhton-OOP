@@ -161,108 +161,111 @@
 # ------------------ Multiple Inheritance -------------
 
 # Parent class 1
-class Person:
-    def person_info(self, name, age):
-        print('Inside Person class')
-        print('Name:', name, 'Age:', age)
-
-# Parent class 2
-class Company(Person):
-    def company_info(self, company_name, location):
-        print('Inside Company class')
-        print('Name:', company_name, 'location:', location)
-
-# Child class
-class Employee(Company, Person):
-    def Employee_info(self, salary, skill):
-        print('Inside Employee class')
-        print('Salary:', salary, 'Skill:', skill)
-
-# Create object of Employee
-emp = Employee()
-print(Employee.mro())
-
-# access data
-emp.person_info('Jessa', 28)
-emp.company_info('Google', 'Atlanta')
-emp.Employee_info(12000, 'Machine Learning')
+# from operator import le
 
 
-# ------------------ Multilevel Inheritance -------------
+# class Person:
+#     def person_info(self, name, age):
+#         print('Inside Person class')
+#         print('Name:', name, 'Age:', age)
 
-# Base class
-class Vehicle:
-    def Vehicle_info(self):
-        print('Inside Vehicle class')
+# # Parent class 2
+# class Company(Person):
+#     def company_info(self, company_name, location):
+#         print('Inside Company class')
+#         print('Name:', company_name, 'location:', location)
 
-# Child class
-class Car(Vehicle):
-    def car_info(self):
-        print('Inside Car class')
+# # Child class
+# class Employee(Company, Person):
+#     def Employee_info(self, salary, skill):
+#         print('Inside Employee class')
+#         print('Salary:', salary, 'Skill:', skill)
 
-# Child class
-class SportsCar(Car):
-    def sports_car_info(self):
-        print('Inside SportsCar class')
+# # Create object of Employee
+# emp = Employee()
+# print(Employee.mro())
 
-# Create object of SportsCar
-s_car = SportsCar()
-
-# access Vehicle's and Car info using SportsCar object
-s_car.Vehicle_info()
-s_car.car_info()
-s_car.sports_car_info()
-
-
-# ------------------ Hierarichical Inheritance -------------
-
-class Vehicle:
-    def info(self):
-        print("This is Vehicle")
-
-class Car(Vehicle):
-    def car_info(self, name):
-        print("Car name is:", name)
-
-class Truck(Vehicle):
-    def truck_info(self, name):
-        print("Truck name is:", name)
-
-obj1 = Car()
-obj1.info()
-obj1.car_info('BMW')
-
-obj2 = Truck()
-obj2.info()
-obj2.truck_info('Ford')
+# # access data
+# emp.person_info('Jessa', 28)
+# emp.company_info('Google', 'Atlanta')
+# emp.Employee_info(12000, 'Machine Learning')
 
 
-# ------------------ Hybrid (Diamond) Inheritance -------------
+# # ------------------ Multilevel Inheritance -------------
+
+# # Base class
+# class Vehicle:
+#     def Vehicle_info(self):
+#         print('Inside Vehicle class')
+
+# # Child class
+# class Car(Vehicle):
+#     def car_info(self):
+#         print('Inside Car class')
+
+# # Child class
+# class SportsCar(Car):
+#     def sports_car_info(self):
+#         print('Inside SportsCar class')
+
+# # Create object of SportsCar
+# s_car = SportsCar()
+
+# # access Vehicle's and Car info using SportsCar object
+# s_car.Vehicle_info()
+# s_car.car_info()
+# s_car.sports_car_info()
 
 
-class Vehicle:
-    def vehicle_info(self):
-        print("Inside Vehicle class")
+# # ------------------ Hierarichical Inheritance -------------
 
-class Car(Vehicle):
-    def car_info(self):
-        print("Inside Car class")
+# class Vehicle:
+#     def info(self):
+#         print("This is Vehicle")
 
-class Truck(Vehicle):
-    def truck_info(self):
-        print("Inside Truck class")
+# class Car(Vehicle):
+#     def car_info(self, name):
+#         print("Car name is:", name)
 
-# Sports Car can inherits properties of Vehicle and Car
-class SportsCar(Car, Vehicle):
-    def sports_car_info(self):
-        print("Inside SportsCar class")
+# class Truck(Vehicle):
+#     def truck_info(self, name):
+#         print("Truck name is:", name)
 
-# create object
-s_car = SportsCar()
+# obj1 = Car()
+# obj1.info()
+# obj1.car_info('BMW')
 
-s_car.vehicle_info()
-s_car.car_info()
-s_car.sports_car_info()
+# obj2 = Truck()
+# obj2.info()
+# obj2.truck_info('Ford')
+
+
+# # ------------------ Hybrid (Diamond) Inheritance -------------
+
+
+# class Vehicle:
+#     def vehicle_info(self):
+#         print("Inside Vehicle class")
+
+# class Car(Vehicle):
+#     def car_info(self):
+#         print("Inside Car class")
+
+# class Truck(Vehicle):
+#     def truck_info(self):
+#         print("Inside Truck class")
+
+# # Sports Car can inherits properties of Vehicle and Car
+# class SportsCar(Car, Vehicle):
+#     def sports_car_info(self):
+#         print("Inside SportsCar class")
+
+# # create object
+# s_car = SportsCar()
+
+# s_car.vehicle_info()
+# s_car.car_info()
+# s_car.sports_car_info()
 
 # --------- use of super function ----------- 
 
@@ -323,3 +326,116 @@ s_car.sports_car_info()
 # obj.display()
 # obj.show()
 # print(C.mro())
+
+
+# ---------------- Polynorphsim ----------------
+# class Shopping:
+#     def __init__(self, basket, buyer):
+#         self.basket = list(basket)
+#         self.buyer = buyer
+
+#     def __len__(self):
+#         print('Redefine length')
+#         count = len(self.basket)
+#         # count total items in a different way
+#         # pair of shoes and shir+pant
+#         return count * 2
+
+# shopping = Shopping(['Shoes', 'dress'], 'Jessa')
+# print(len(shopping))
+
+
+# ----------- Polymorphism in built in functions ----------
+
+# class cars:
+#     def __init__(self,carList,az) -> None:
+#         self.list  = carList
+    
+#     def __len__(self):
+#         count = len(self.list)
+#         return count*2
+
+# obj = cars(["Mercedes","BMW","HONDA"],"asd")
+# obj1 = ["Mercedes","BMW","HONDA","asd"]
+# print(len(obj))
+
+# ----------- Polymorphism in class methods ----------
+
+
+# class Ferrari:
+#     def fuel_type(self):
+#         print("Petrol")
+
+#     def max_speed(self):
+#         print("Max speed 350")
+
+# class BMW:
+#     def fuel_type(self):
+#         print("Diesel")
+
+#     def max_speed(self):
+#         print("Max speed is 240")
+
+# ferrari = Ferrari()
+# bmw = BMW()
+
+# # iterate objects of same type
+# for car in (ferrari, bmw):
+#     # call methods without checking class of object
+#     car.fuel_type()
+#     car.max_speed()
+
+
+# -----------Polymorphism with Function and Objects--------------
+
+# class Ferrari:
+#     def fuel_type(self):
+#         print("Petrol")
+
+#     def max_speed(self):
+#         print("Max speed 350")
+
+# class BMW:
+#     def fuel_type(self):
+#         print("Diesel")
+
+#     def max_speed(self):
+#         print("Max speed is 240")
+
+# ferrari = Ferrari()
+# bmw = BMW()
+
+# # iterate objects of same type
+# for car in (ferrari, bmw):
+#     # call methods without checking class of object
+#     car.fuel_type()
+#     car.max_speed()
+
+
+# ----------Polymorphism with Function and Objects------------
+
+class Ferrari:
+    def fuel_type(self):
+        print("Petrol")
+
+    def max_speed(self):
+        print("Max speed 350")
+
+class BMW:
+    def fuel_type(self):
+        print("Diesel")
+
+    def max_speed(self):
+        print("Max speed is 240")
+
+# normal function
+def car_details(obj):
+    obj.fuel_type()
+    obj.max_speed()
+
+ferrari = Ferrari()
+bmw = BMW()
+
+car_details(ferrari)
+car_details(bmw)
+
