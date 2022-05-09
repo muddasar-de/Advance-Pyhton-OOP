@@ -412,30 +412,391 @@
 #     car.max_speed()
 
 
-# ----------Polymorphism with Function and Objects------------
+# class Ferrari:
+#     def fuel_type(self):
+#         print("Petrol")
 
-class Ferrari:
-    def fuel_type(self):
-        print("Petrol")
+#     def max_speed(self):
+#         print("Max speed 350")
 
-    def max_speed(self):
-        print("Max speed 350")
+# class BMW:
+#     def fuel_type(self):
+#         print("Diesel")
 
-class BMW:
-    def fuel_type(self):
-        print("Diesel")
+#     def max_speed(self):
+#         print("Max speed is 240")
 
-    def max_speed(self):
-        print("Max speed is 240")
+# # normal function
+# def car_details(obj):
+#     obj.fuel_type()
+#     obj.max_speed()
 
-# normal function
-def car_details(obj):
-    obj.fuel_type()
-    obj.max_speed()
+# ferrari = Ferrari()
+# bmw = BMW()
 
-ferrari = Ferrari()
-bmw = BMW()
+# car_details(ferrari)
+# car_details(bmw)
 
-car_details(ferrari)
-car_details(bmw)
 
+# --------------- Encapsulation ---------------- 
+
+# A normal creating class with declaring varibales and methods leads to encapsulation
+
+# class Employee:
+#     # constructor
+#     def __init__(self, name, salary, project):
+#         # data members
+#         self.name = name
+#         self.salary = salary
+#         self.project = project
+
+#     # method
+#     # to display employee's details
+#     def show(self):
+#         # accessing public data member
+#         print("Name: ", self.name, 'Salary:', self.salary)
+
+#     # method
+#     def work(self):
+#         print(self.name, 'is working on', self.project)
+
+# # creating object of a class
+# emp = Employee('Jessa', 8000, 'NLP')
+
+# # calling public method of the class
+# emp.show()
+# emp.work()
+
+
+
+#------------------ Access Modifiers ----------------------
+
+# --------- public member --------
+# class Employee:
+#     def __init__(self, name, salary) -> None:
+#         self.salary = salary
+#         self.name = name
+    
+#     def work(self):
+#         print(f"{self.name} is doing job at {self.salary} salary package.")
+
+# emp = Employee("Muddasar", 15000)
+
+# # instance varibales are accessible outside and inside the class
+
+# print(f"{emp.name} {emp.salary}")
+
+# emp.work()
+
+
+# ------------- protected member ----------
+
+# class Person:
+#     def __init__(self,name, salary) -> None:
+#         self._salary = salary
+#         self.name = name
+#     def work(self):
+#        print(f"{self.name} is doing job at {self.salary} salary package.")
+
+# class Employee(Person):
+#     def __init__(self, name, salary) -> None:
+#         super().__init__(name, salary)
+        
+## protected member can be access inside or outside the class as well as thier subclasses.
+
+# emp = Employee("Muddasar", 15000)
+# print(emp._salary, emp.name)
+
+
+# ------------- private member ----------
+
+# class Person:
+#     def __init__(self,name, salary) -> None:
+#         self.__salary = salary
+#         self.name = name
+#     def _work(self):
+#        print(f"{self.name} is doing job at {self.__salary} salary package.")
+
+# class Employee(Person):
+#     def __init__(self, name, salary) -> None:
+#         super().__init__(name, salary)
+        
+# # privat member is only accessible with in the class scope where it is declared.
+# emp = Employee("Muddasar", 15000)
+# # print(emp.__salary, emp.name)
+# emp._work()
+
+# per = Person("Muddasar", 1500000)
+
+# print(per.__salary)
+
+
+# ----------------- How to access Private Members --------------- 
+
+# Method 1: Public method to access private members
+
+# Example: Access Private member outside of a class using an instance method
+
+
+# class Employee:
+#     # constructor
+#     def __init__(self, name, salary):
+#         # public data member
+#         self.name = name
+#         # private member
+#         self.__salary = salary
+
+#     # public instance methods
+#     def show(self):
+#         # private members are accessible from a class
+#         print("Name: ", self.name, 'Salary:', self.__salary)
+
+# # creating object of a class
+# emp = Employee('Jessa', 10000)
+
+# # calling public method of the class
+# emp.show()
+
+
+# #Method 2: Name Mangling to access private members
+
+# class Person:
+#     def __init__(self, name) -> None:
+#         self.__name = name
+    
+# class Employee(Person):
+#     def __init__(self, name) -> None:
+#         super().__init__(name)
+    
+# emp = Employee("Muddasar")
+
+# print(emp._Person__name)
+
+
+# from time import sleep
+
+
+# class Person():
+#     def __init__(self,name,salary) -> None:
+#         self.n = name
+#         self.s = salary
+
+# class Employee(Person):
+#     def __init__(self, name, salary,role) -> None:
+#         super().__init__(name,salary)
+#         self.r = role
+
+
+#     def __del__(self):
+#         print("object destroyed")
+# obj = Employee("Muddasar",15000, "JD")
+# obj1 = obj
+# print(obj.n)
+# sleep(5)
+# print(obj1.n)
+# del obj
+# print(obj1.r)
+
+
+
+# -------------------Abstraction---------------
+# from abc import ABC,abstractclassmethod
+
+# from numpy import number
+
+# class Parent(ABC):
+
+#     @abstractclassmethod
+#     def pqr(self):
+#         pass
+
+# class Child(Parent):
+
+#     def pqr(self):
+#         print("PQR")
+
+# obj = Child()
+# obj.pqr()
+
+
+
+# ----------------------- Advance Python --------------------------
+
+# Iterators:
+
+# numbers = [1, 2, 3]
+
+# iterator = iter(numbers)
+# print(type(iterator))
+
+
+# class PowTwo:
+#     """Class to implement an iterator
+#     of powers of two"""
+
+#     def __init__(self, max=0):
+#         self.max = max
+
+#     def __iter__(self):
+#         self.n = 0
+#         return self
+
+#     def __next__(self):
+#         if self.n <= self.max:
+#             result = 2 ** self.n
+#             self.n += 1
+#             return result
+#         else:
+#             raise StopIteration
+
+
+# # create an object
+# numbers = PowTwo(3)
+
+# # create an iterable from the object
+# i = iter(numbers)
+
+# # Using next to get to the next iterator element
+# print(next(i))
+# print(next(i))
+# print(next(i))
+# print(next(i))
+
+
+
+# ------------------- Generators ------------------
+
+# A simple generator function
+# def my_gen():
+#     n = 1
+#     print('This is printed first')
+#     # Generator function contains yield statements
+#     yield n
+
+#     n += 1
+#     print('This is printed second')
+#     yield n
+
+#     n += 1
+#     print('This is printed at last')
+#     yield n
+
+
+# # Using for loop
+# for item in my_gen():
+#     print(item)
+
+
+# Python Generators with a Loop
+
+# def rev__str(str):
+#     for ch in range(len(str)-1,-1,-1):
+#         yield str[ch]
+
+# print(rev__str("Hellow"))
+
+# for chr in rev__str("Hellow"):
+#     print(chr)
+
+
+# ------ Pipeline Calling Generators --------
+
+# def fib(max):
+#     x, y =0,1
+#     for i in range(max):
+#         # print("fib",i)
+#         x, y = y, y+1
+#         print("fib",x)
+#         yield x
+
+# def square(nums):
+#     print(nums)
+#     for num in nums:
+#         print("Square",num)
+#         yield num**2
+
+# print("Sum",sum(square(fib(10))))
+
+
+# ------------- Decorators --------------
+
+#  -------------- scenario 1 ---------------
+# def add(num):
+#     return num +1
+
+# def operate(func,x):
+#     print(func)
+#     return func(x)
+
+# print(operate(add,4))
+
+
+
+# ---------- scenario 2 ------------
+
+
+# def operate(n):
+#     print(n)
+
+    
+#     def add(num):
+#         return num +1
+#     return add
+
+# oper = operate(2)
+
+# print(oper(4))
+
+
+# ------- Realtime Examples ---------
+
+# def only_customer(func):
+
+#     def decorator(user):
+#         if(user == "muddasar"):
+#             print("True")
+#             return func
+#         else:
+#             print("False")
+
+#     return decorator
+
+
+# @only_customer
+# def login(user):
+#     print(user)
+#     print("loged in")
+
+# login("muddasar")
+
+
+
+# def smart_divide(func):
+#     def inner(a, b):
+#         print("I am going to divide", a, "and", b)
+#         if b == 0:
+#             print("Whoops! cannot divide")
+#             return
+
+#         return func(a, b)
+#     return inner
+
+
+# @smart_divide
+# def divide(a, b):
+#     print(a/b)
+
+# divide(8,0)
+
+
+def treverse(*args, **kwargs):
+    # print(args[0])
+    print(kwargs["a"])
+    for i in args:
+        print(i)
+
+
+
+asd = 40
+asdwq = 2
+treverse(asd,asdwq, a=1,b=4,c=5,d=6,e=7 )
