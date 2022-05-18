@@ -140,22 +140,35 @@
 
 # ------------------ Single Inheritance -------------
 
-# Base class
-# class Vehicle:
-#     def Vehicle_info(self):
-#         print('Inside Vehicle class')
 
-# # Child class
-# class Car(Vehicle):
-#     def car_info(self):
-#         print('Inside Car class')
 
-# # Create object of Car
-# car = Car()
+# Base Class
 
-# # access Vehicle's info using car object
-# car.Vehicle_info()
-# car.car_info()
+
+class Vehicle:
+    _sch = "PAK"
+    def __init__(self) -> None:
+        self.name = "Muddasar"
+        self.__age = 23
+    def Vehicle_info(self):
+        print('Inside Vehicle class')
+        
+# Child class
+class Car(Vehicle):
+    def car_info(self):
+        print('Inside Car class')
+
+# Create object of Car
+car = Car()
+
+veh = Vehicle()
+print(veh._sch)
+# access Vehicle's info using car object
+car.Vehicle_info()
+car.car_info()
+# print(car.__age)
+print(car._sch)
+# print(car.age)
 
 
 # ------------------ Multiple Inheritance -------------
@@ -755,7 +768,7 @@
 #     def decorator(user):
 #         if(user == "muddasar"):
 #             print("True")
-#             return func
+#             return func(user)
 #         else:
 #             print("False")
 
@@ -777,8 +790,9 @@
 #         if b == 0:
 #             print("Whoops! cannot divide")
 #             return
-
-#         return func(a, b)
+#         if a<b:
+#             a,b = b,a
+#         return func(a,b)
 #     return inner
 
 
@@ -786,17 +800,26 @@
 # def divide(a, b):
 #     print(a/b)
 
-# divide(8,0)
+# divide(2,7)
+
+# ------------------------ *args, **kwargs -----------------
 
 
-def treverse(*args, **kwargs):
-    # print(args[0])
-    print(kwargs["a"])
-    for i in args:
-        print(i)
+# def treverse(*args, **kwargs):
+#     # print(args[0])
+#     print(kwargs["a"])
+#     for i in args:
+#         print(i)
 
 
 
-asd = 40
-asdwq = 2
-treverse(asd,asdwq, a=1,b=4,c=5,d=6,e=7 )
+# asd = '''Muddasa
+# asd
+# asd         asd'''
+# asdwq = 2
+# treverse(asd,asdwq,2, a=1,b=4,c=5,d=6,e=7 )
+
+# class Class1():
+#     def __init__(self) -> None:
+#         self.name = "Muddasar"
+    
